@@ -34,7 +34,11 @@ window.fbAsyncInit = function() {
 
   function statusChangeCallback(response) {
     if(response.status === "connected") {
+      var result = response.authResponse
+      console.log(result);
       console.log( "logged in and authenticated");
+      $("#profileName").text(result.name);
+      $("profileEmail").text(result.email);
       //if connected - then take the user id, email and name and push to the UserTable in Sequelize
       //setElements(true);
      // testAPI();
