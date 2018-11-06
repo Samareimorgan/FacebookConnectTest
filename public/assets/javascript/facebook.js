@@ -71,17 +71,11 @@
 
 //Functions for Facebook 
 
- 
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-  console.log(response);
-});
-
   function statusChangeCallback(response) {
     if(response.status === "connected") {
       console.log( "logged in and authenticated");
-      setElements(true);
-      testAPI();
+      //setElements(true);
+     // testAPI();
     } else {
       console.log("not authenicated");
       setElements(false);
@@ -114,7 +108,7 @@ FB.getLoginStatus(function(response) {
     FB.api('/me?fields=name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        buildProfile();
+        //buildProfile();
       }
     })
   }
