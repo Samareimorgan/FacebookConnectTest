@@ -1,2 +1,2 @@
-# FacebookConnectTest
-This tests the FacebookConnect Login Authentication
+# Project_2
+Project 2 for Bootcamp

@@ -1,46 +1,39 @@
-// *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-// *********************************************************************************
 
-/*
- *  STEPS TO SEQUELIZE THE STAR WARS APP.
- *  1. Install the sequelize and mysql2 npm packages.
- *  2. Delete the orm from config. In your app folder, create a model folder
- *     with a character.js file in the model
- *  3. In character.js, model out the character table, as detailed
- *     in the schema.sql file located in the root of this project directory.
- *  4. Remove all references to the old orm file,
- *     and replace it with character.js
- *  5. Use Sequelize methods in place of the orm calls
- *     to retrieve and insert data.
- *  6. Update connection.js to use sequelize instead of the mysql package.
- *
- * -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ */
 
-// Dependencies
-// =============================================================
 var express = require("express");
+var bodyParser = require("body-parser");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
 var PORT = process.env.PORT || 8080;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+var app = express();
 
-// Static directory to be served
-app.use(express.static("app/public"));
+var db = require("./models");
 
-// Routes
-// =============================================================
-require("./app/routes/api-routes.js")(app);
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-// Here we introduce HTML routing to serve different HTML files
-require("./app/routes/html-routes.js")(app);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+// parse application/json
+app.use(bodyParser.json());
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+require("./routes/htmlRoutes.js")(app);
+
+require("./routes/api-routes")(app);
+
+
+// Start our server so that it can begin listening to client requests.
+db.sequelize.sync({ force: false }).then(function () {
+  app.listen(PORT, function () {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
 });
