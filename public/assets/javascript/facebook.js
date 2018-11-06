@@ -1,39 +1,47 @@
+ // On Document Load,  check to see if the user is logged into Facebook
+$(document).ready(function() {
+  getLoginStatus();
+  console.log(response);
+  
+  });
 
+  // ++++ Functions with Facebook - Client-Side +++++ 
 
-
-//Functions for Facebook 
- $("#logFacebookBtn").on("click",function() {
-  //FB.logout();
- }
- )
-  function logInFacebook(){
-    FB.login();
-    
-  }
+  // Function to store User Access Token in Session Storage//
   function storeUserAccessToken (userAccess) {
     sessionStorage.setItem("userAccess", userAccess);
+      alert("User Access Stored");
   }
+
+  // Function to check for 
   function statusChangeCallback(response) {
+    //If User is Logged into facebook
     if(response.status === "connected") {
       var result = response.authResponse;
       var userAccess = result.accessToken;
+      //Console log that the user is logged in
       console.log( "logged in and authenticated");
       console.log(result);
       console.log(userAccess);
-      storeUserAccessToken();
-      
-      
-   
-      
+      //Session Store the User Access Token to be used for API request
+      storeUserAccessToken(userAccess);
+      //Hide the Login With Facebook Button
+      //+==========
+      //Display the Logout button in the upper corner
+    } else {
+      //Else log that the user is not logged into Facebook
+      console.log("not logged into Facebook");
+      //Display the Login With Facebook Button
+          //===============
+    }
+    
+      //setElements(false);
       // $("#profileName").html(result.name);
       // $("#profileEmail").html(result.email);
       //if connected - then take the user id, email and name and push to the UserTable in Sequelize
       //setElements(true);
      // testAPI();
-    } else {
-      console.log("not authenicated");
-      setElements(false);
-    }
+    
     
   }
 
