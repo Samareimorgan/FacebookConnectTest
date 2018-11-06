@@ -2,6 +2,9 @@
 
 
 //Functions for Facebook 
+  function logInFacebook(){
+    FB.login();
+  }
 
   function statusChangeCallback(response) {
     if(response.status === "connected") {
