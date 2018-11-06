@@ -18,13 +18,13 @@
       console.log("not authenicated");
       setElements(false);
     }
-    
+    d
   }
 
   function postUserInfo(response) {
     var currentURL = window.location.origin;
        var response = response.authResponse;
-      $.post(currentURL + "/api/users", function(response) {
+      $.post(currentURL + "FacebookConnectTest/api/users", function(response) {
          result = response.authResponse;
          id = result.id;
          userName = result.name;
