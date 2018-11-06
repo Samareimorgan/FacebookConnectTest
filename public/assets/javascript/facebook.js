@@ -2,6 +2,10 @@
 
 
 //Functions for Facebook 
+ $("#logFacebookBtn").on("click",function() {
+  FB.logout();
+ }
+ )
   function logInFacebook(){
     FB.login();
   }
