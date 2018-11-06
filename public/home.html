@@ -98,14 +98,14 @@ window.fbAsyncInit = function() {
             featured content or information.</p>
           <hr class="my-4">
           <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Log In Here
-          </button>
+           <!-- Log in to Facebook -->
+           <div class="fb-login-button" data-width="75px" data-size="large" data-button-type="login_with"
+                  data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+      
         </div>
 
         <!--Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -125,7 +125,10 @@ window.fbAsyncInit = function() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Log In Here
+          </button>-->
       <!--Searchbar and Recipe Display-->
       <hr>
       <p>Search for recipes... </p>
