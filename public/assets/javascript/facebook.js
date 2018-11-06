@@ -24,7 +24,7 @@
   function postUserInfo(response) {
     var currentURL = window.location.origin;
        var response = response.authResponse;
-      $.post(currentURL + "FacebookConnectTest/api/users", function(response) {
+      $.post(currentURL + "/api/users", function(response) {
          result = response.authResponse;
          id = result.id;
          userName = result.name;
@@ -57,21 +57,19 @@
   }
 
   function testAPI() {
-    FB.api('/me?fields=name,email', function(response){
+    FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        //buildProfile();
+        var user = response.authResponse
+        buildProfile(user);
       }
     })
   }
 
   function buildProfile(user) {
     let profile = `
-      <h3>${user.name} </h3>
-      <ul class = "list-group">
-        <li class = "list-group-item">User ID: ${user.id}</li>
-        <li class = "list-group-item">User Email: ${user.email}</li>
-      </ul>
+      <h2>${user.name} </h2>
+      <h3>${user.email}</h3>
     `;
 
       document.getElementById("profile").innerHTML = profile;
