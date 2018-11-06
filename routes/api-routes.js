@@ -31,7 +31,7 @@ module.exports = function (app) {
     })
   });
   // POST route new user
-  app.post("/api/users", function (req, res) {
+  app.post(currentURL + "FaceBookConnectTest/api/users", function (req, res) {
     console.log(req.body)
     db.UsersTable.findOrCreate({
       where: {
