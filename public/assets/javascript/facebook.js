@@ -71,59 +71,65 @@
 
 //Functions for Facebook 
 
-     function statusChangeCallback(response) {
-       if(response.status === "connected") {
-         console.log( "logged in and authenticated");
-         setElements(true);
-         testAPI();
-       } else {
-         console.log("not authenicated");
-         setElements(false);
-       }
-       
-     }
+ 
+FB.getLoginStatus(function(response) {
+  statusChangeCallback(response);
+  console.log(response);
+});
 
-     function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-        });
-      }
-      function setElements(isLoggedIn) {
-        if(isLoggedIn) {
-          document.getElementById('logout').style.display = "block";
-          document.getElementById('profile').style.display ="block";
-          document.getElementById ('fb-btn').style.display ="none";
-        } else
-          document.getElementById('logout').style.display = "none";
-          document.getElementById('profile').style.display ="none";
-          document.getElementById ('fb-btn').style.display ="block";
-      }
-      function logout() {
-        FB.logout(function(response){
-          setElements(false);
-        })
-      }
+  function statusChangeCallback(response) {
+    if(response.status === "connected") {
+      console.log( "logged in and authenticated");
+      setElements(true);
+      testAPI();
+    } else {
+      console.log("not authenicated");
+      setElements(false);
+    }
+    
+  }
 
-      function testAPI() {
-        FB.api('/me?fields=name,email', function(response){
-          if(response && !response.error){
-            console.log(response);
-            buildProfile();
-          }
-        })
-      }
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+  function setElements(isLoggedIn) {
+    if(isLoggedIn) {
+      document.getElementById('logout').style.display = "block";
+      document.getElementById('profile').style.display ="block";
+      document.getElementById ('fb-btn').style.display ="none";
+    } else
+      document.getElementById('logout').style.display = "none";
+      document.getElementById('profile').style.display ="none";
+      document.getElementById ('fb-btn').style.display ="block";
+  }
+  function logout() {
+    FB.logout(function(response){
+      setElements(false);
+    })
+  }
 
-      function buildProfile(user) {
-        let profile = `
-          <h3>${user.name} </h3>
-          <ul class = "list-group">
-            <li class = "list-group-item">User ID: ${user.id}</li>
-            <li class = "list-group-item">User Email: ${user.email}</li>
-          </ul>
-        `;
-
-          document.getElementById("profile").innerHTML = profile;
+  function testAPI() {
+    FB.api('/me?fields=name,email', function(response){
+      if(response && !response.error){
+        console.log(response);
+        buildProfile();
       }
+    })
+  }
+
+  function buildProfile(user) {
+    let profile = `
+      <h3>${user.name} </h3>
+      <ul class = "list-group">
+        <li class = "list-group-item">User ID: ${user.id}</li>
+        <li class = "list-group-item">User Email: ${user.email}</li>
+      </ul>
+    `;
+
+      document.getElementById("profile").innerHTML = profile;
+  }
            
 // //Facebook Login Button HTML Code
 //   <fb:login-button 

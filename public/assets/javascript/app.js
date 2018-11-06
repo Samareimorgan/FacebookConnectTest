@@ -63,16 +63,10 @@ function apiKey() {
                     // retreival of recipe ingredients
                     // $(".search-res").on('click', 'a.ingredients', function() {
                     //     event.preventDefault();
-<<<<<<< HEAD
-                        results.recipe.ingredients.forEach(function (element) {
-                            $(".search-res").append("<ul><li class='list-group-item'>" + element + "</li></ul>");
-                        });                     
-=======
                     // results.recipe.ingredients.forEach(function (element) {
                     //     $(".search-res").append("<ul><li class='list-group-item'>" + element + "</li></ul>");
                     // });
 
->>>>>>> master
                     // });
                 },
                 error: function (error) {
