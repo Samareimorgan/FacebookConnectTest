@@ -24,14 +24,15 @@ module.exports = function (app) {
 
   //USERS
   // GET route for getting all of the users
-  app.get("/api/users", function (req, res) {
+  var currentURL = window.location.origin;
+  app.get(currentURL + "/FacebookConnectTest/api/users", function (req, res) {
     db.UsersTable.findAll({}).then(function (dbUsers) {
       res.json(dbUsers);
     })
   });
   // POST route new user
   var currentURL = window.location.origin;
-  app.post(currentURL + "FacebookConnectTest/api/users", function (req, res) {
+  app.post(currentURL + "/FacebookConnectTest/api/users", function (req, res) {
     console.log(req.body)
     db.UsersTable.findOrCreate({
       where: {
