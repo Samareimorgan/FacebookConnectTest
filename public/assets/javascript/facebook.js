@@ -84,8 +84,10 @@ $(document).ready(function() {
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        var user = response.authResponse.name;
-        console.log(user);
+        var userName = response.name;
+        var userId = response.id;
+        var userEmail = response.email;
+        console.log(userName + userId + userEmail);
         //buildProfile(user);
       }
     })
