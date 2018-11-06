@@ -1,7 +1,16 @@
 function apiKey() {
     $.get("/getkey", function (key) {
         console.log(key);
+        
+        // function getUserInfo(userAccess){
+        //     var userAccess = sessionStorage.getItem("userAccess");
+        //     .ajax({
+        //         url: "https://developers.facebook.com/v3.0/me?fields=id,name,email"
+        //         type: "GET",
+        //         data: 
+        //     })
 
+        // }
 
         //THIS IS WHERE WE WILL PUT IN THE CODE TO GET THE UNIQUE USER ID and userName...SAVED GLOBALLY^
         //so we can use it throughout this js file as the userId variable...

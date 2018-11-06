@@ -3,20 +3,27 @@
 
 //Functions for Facebook 
  $("#logFacebookBtn").on("click",function() {
-  FB.logout();
+  //FB.logout();
  }
  )
   function logInFacebook(){
     FB.login();
     
   }
-
+  function storeUserAccessToken (userAccess) {
+    sessionStorage.setItem("userAccess", userAccess);
+  }
   function statusChangeCallback(response) {
     if(response.status === "connected") {
-      var result = response.authResponse
-      console.log(result);
+      var result = response.authResponse;
+      var userAccess = result.accessToken;
       console.log( "logged in and authenticated");
-      postUserInfo(response);
+      console.log(result);
+      console.log(userAccess);
+      
+      
+   
+      
       // $("#profileName").html(result.name);
       // $("#profileEmail").html(result.email);
       //if connected - then take the user id, email and name and push to the UserTable in Sequelize
@@ -68,8 +75,9 @@
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        var user = response.authResponse
-        buildProfile(user);
+        var user = response.authResponse.name
+        console.log(user);
+        //buildProfile(user);
       }
     })
   }

@@ -28,14 +28,15 @@ window.fbAsyncInit = function() {
     
   //FB.login();
   FB.getLoginStatus(function(response) {
-    postUserInfo(response);
+    //postUserInfo(response);
 
     console.log(response);
     console.log(response.authResponse);
     console.log(response.authResponse.accessToken);
     console.log(response.authResponse.userID);
       statusChangeCallback(response);
-    //testAPI();
+
+    testAPI();
   });
     
 };
