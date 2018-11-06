@@ -20,6 +20,7 @@
       console.log( "logged in and authenticated");
       console.log(result);
       console.log(userAccess);
+      storeUserAccessToken();
       
       
    
@@ -33,7 +34,7 @@
       console.log("not authenicated");
       setElements(false);
     }
-    d
+    
   }
 
   function postUserInfo(response) {
@@ -75,7 +76,7 @@
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        var user = response.authResponse.name
+        var user = response.authResponse.name;
         console.log(user);
         //buildProfile(user);
       }
