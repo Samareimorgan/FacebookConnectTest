@@ -95,8 +95,8 @@
   }
 
   function enterUser(userId, userName) {
-    var currentURL = window.location.href;
-    $.post(currentURL + "/api/users", userId, userName);
+    var currentURL = window.location.origin;
+    $.post(currentURL + "FacebookConnectTest/api/users", userId, userName);
     console.log("pushed user data");
 }
 

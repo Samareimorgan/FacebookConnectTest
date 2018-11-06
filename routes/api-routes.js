@@ -30,7 +30,8 @@ module.exports = function (app) {
     })
   });
   // POST route new user
-  app.post("/api/users", function (req, res) {
+  var currentURL = window.location.origin;
+  app.post(currentURL + "FacebookConnectTest/api/users", function (req, res) {
     console.log(req.body)
     db.UsersTable.findOrCreate({
       where: {
