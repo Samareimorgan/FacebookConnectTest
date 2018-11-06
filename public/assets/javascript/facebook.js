@@ -90,7 +90,7 @@
        var userEmail = response.email;
         console.log(name +  userId);
         enterUser(userId, userName);
-        //buildProfile(user);
+        buildProfile(user);
       }
     })
   }
