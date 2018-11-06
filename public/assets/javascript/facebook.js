@@ -8,8 +8,9 @@
       var result = response.authResponse
       console.log(result);
       console.log( "logged in and authenticated");
-      $("#profileName").html(result.name);
-      $("#profileEmail").html(result.email);
+      postUserInfo(response);
+      // $("#profileName").html(result.name);
+      // $("#profileEmail").html(result.email);
       //if connected - then take the user id, email and name and push to the UserTable in Sequelize
       //setElements(true);
      // testAPI();
@@ -19,6 +20,19 @@
     }
     
   }
+
+  function postUserInfo(response) {
+       var response = response.authResponse;
+      $.post("/api/users", function(response) {
+         result = response.authResponse;
+         id = result.id;
+         userName = result.name;
+
+         console.log(id + userName);
+       // initializeRows();
+      });
+    }
+  
 
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
