@@ -23,8 +23,9 @@ module.exports = function (app) {
 
 
   //USERS
+  var currentURL = window.location.orgin;
   // GET route for getting all of the users
-  app.get("/api/users", function (req, res) {
+  app.get(currentURL + "/api/users", function (req, res) {
     db.UsersTable.findAll({}).then(function (dbUsers) {
       res.json(dbUsers);
     })
