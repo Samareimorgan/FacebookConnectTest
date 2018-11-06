@@ -1,9 +1,9 @@
  // On Document Load,  check to see if the user is logged into Facebook
-$(document).ready(function() {
-  getLoginStatus();
-  console.log(response);
+// $(document).ready(function() {
+//   getLoginStatus();
+//   console.log(response);
   
-  });
+//   });
 
   // ++++ Functions with Facebook - Client-Side +++++ 
 
