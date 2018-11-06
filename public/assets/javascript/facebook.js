@@ -8,7 +8,7 @@
  )
   function logInFacebook(){
     FB.login();
-    statusChangeCallback(response);
+    
   }
 
   function statusChangeCallback(response) {
