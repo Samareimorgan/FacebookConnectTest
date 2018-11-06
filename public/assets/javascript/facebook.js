@@ -84,15 +84,21 @@
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        var userName = response.name;
+        var name = response.name;
         var userId = response.id;
-        var userEmail = response.email;
-        console.log(userName + userId + userEmail);
+       // var userEmail = response.email;
+        console.log(name +  userId);
+        enterUser(userId,name);
         //buildProfile(user);
       }
     })
   }
 
+  function enterUser(userId, name) {
+    $.post("/api/users", userId, name);
+    console.log("pushed user data");
+}
+  
   function buildProfile(user) {
     let profile = `
       <h2>${user.name} </h2>

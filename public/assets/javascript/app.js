@@ -1,18 +1,8 @@
 function apiKey() {
     $.get("/getkey", function (key) {
         console.log(key);
-        
-        // function getUserInfo(userAccess){
-        //     var userAccess = sessionStorage.getItem("userAccess");
-        //     .ajax({
-        //         url: "https://developers.facebook.com/v3.0/me?fields=id,name,email"
-        //         type: "GET",
-        //         data: 
-        //     })
-
-        // }
-
-        //THIS IS WHERE WE WILL PUT IN THE CODE TO GET THE UNIQUE USER ID and userName...SAVED GLOBALLY^
+       
+                //THIS IS WHERE WE WILL PUT IN THE CODE TO GET THE UNIQUE USER ID and userName...SAVED GLOBALLY^
         //so we can use it throughout this js file as the userId variable...
         //you will call the create user function at the bottom of the page...if the user already exists...it won't duplicate
         var userId = 6;
@@ -141,8 +131,8 @@ function apiKey() {
         })
 
         // A function for creating a user
-        function enterUser(userData) {
-            $.post("/api/users", userData);
+        function enterUser(userId, name) {
+            $.post("/api/users", userId, name);
             console.log("pushed user data");
         }
 
