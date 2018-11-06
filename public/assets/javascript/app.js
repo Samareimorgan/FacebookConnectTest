@@ -5,6 +5,7 @@ function apiKey() {
                 //THIS IS WHERE WE WILL PUT IN THE CODE TO GET THE UNIQUE USER ID and userName...SAVED GLOBALLY^
         //so we can use it throughout this js file as the userId variable...
         //you will call the create user function at the bottom of the page...if the user already exists...it won't duplicate
+        
         var userId = 6;
         var userName = "luke";
 
@@ -174,10 +175,10 @@ function apiKey() {
         //as of right now this is passing in the username luke and id 2 variables into our database
         //it will create one if it doesn't exist or will update the existing one with respective id
         //YOU DO NOT NEED TO CHANGE ANY OF THIS BELOW...just the variables at the top need to have the info from facebook login
-        enterUser({
-            userName: userName,
-            id: userId
-        });
+        // enterUser({
+        //     userName: userName,
+        //     id: userId
+        // });
     });
 }
 

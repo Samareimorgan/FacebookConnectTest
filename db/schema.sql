@@ -1,4 +1,4 @@
--- Drops the blogger if it exists currently --
+-- Drops the user if it exists currently --
 DROP DATABASE IF EXISTS project2_db;
--- Creates the "blogger" database --
+-- Creates the "user" database --
 CREATE DATABASE project2_db;

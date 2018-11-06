@@ -46,7 +46,7 @@
   }
 
   function postUserInfo(response) {
-    var currentURL = window.location.origin;
+    var currentURL = window.location.href;
        var response = response.authResponse;
       $.post(currentURL + "/api/users", function(response) {
          result = response.authResponse;
@@ -84,20 +84,23 @@
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
         console.log(response);
-        var name = response.name;
+        var userName = response.name;
         var userId = response.id;
        // var userEmail = response.email;
         console.log(name +  userId);
-        enterUser(userId,name);
+        enterUser(userId, userName);
         //buildProfile(user);
       }
     })
   }
 
-  function enterUser(userId, name) {
-    $.post("/api/users", userId, name);
+  function enterUser(userId, userName) {
+    var currentURL = window.location.href;
+    $.post(currentURL + "/api/users", userId, userName);
     console.log("pushed user data");
 }
+
+
   
   function buildProfile(user) {
     let profile = `
