@@ -97,15 +97,17 @@
 
   function enterUser(userId, userName) {
     var currentURL = window.location.origin;
-    $.post(currentURL + "/FacebookConnectTest/api/users", userId, userName);
+    $.post(currentURL + "/FacebookConnectTest/api/users", userId).then(function(res){
+      console.log(res);
+    });
     console.log("pushed user data");
 }
 
 function buildProfile(userName, userEmail, userPic) {
  console.log("build profile should be working " + userName, +" " + userEmail + " " + userPic);
  
- $("#profileName").innerHTML(userName);
-  $("#profileEmail").innerHTML(userEmail);
+ $("#profileName").text(userName);
+  $("#profileEmail").text(userEmail);
   $("#profilePhoto").attr("src", userPic);
 };
 
