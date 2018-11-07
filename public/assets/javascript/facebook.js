@@ -81,12 +81,12 @@
   }
 
   function facebookAPI() {
-    FB.api('/me?fields=id,name,email', function(response){
+    FB.api('/me?fields=id,name,email, picture', function(response){
       if(response && !response.error){
-        console.log(response.authResponse);
-        var userName = response.name;
-        var userId = response.id;
-        var userPic = response.authResponse.picture;
+        console.log(response);
+       var userName = response.name;
+       var userId = response.id;
+       var userPic = response.picture;
        var userEmail = response.email;
         console.log(name +  userId);
         enterUser(userId, userName);
@@ -102,7 +102,7 @@
 }
 
 function buildProfile(userName, userEmail, userPic) {
- console.log("build profile should be working " + userName, +"" + userEmail + "" + userPic);
+ console.log("build profile should be working " + userName, +" " + userEmail + " " + userPic);
   $("#profileName").text(userName);
   $("#profileEmail").text(userEmail);
   $("#profilePhoto").attr("src", userPic);
