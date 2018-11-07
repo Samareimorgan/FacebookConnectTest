@@ -83,10 +83,10 @@
   function facebookAPI() {
     FB.api('/me?fields=id,name,email', function(response){
       if(response && !response.error){
-        console.log(response);
+        console.log(response.authResponse);
         var userName = response.name;
         var userId = response.id;
-        var userPic = response.picture;
+        var userPic = response.authResponse.picture;
        var userEmail = response.email;
         console.log(name +  userId);
         enterUser(userId, userName);
