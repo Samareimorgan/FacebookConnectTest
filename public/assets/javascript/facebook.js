@@ -86,7 +86,7 @@
         console.log(response);
        var userName = response.name;
        var userId = response.id;
-       var userPic = response.picture;
+       var userPic = response.picture.data.url;
        var userEmail = response.email;
         console.log(name +  userId);
         enterUser(userId, userName);
