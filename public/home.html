@@ -30,13 +30,13 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     //postUserInfo(response);
 
-    //console.log(response);
+    console.log(response);
     //console.log(response.authResponse);
     //console.log(response.authResponse.accessToken);
     //console.log(response.authResponse.userID); -->
-      statusChangeCallback(response);
+    statusChangeCallback(response);
 
-    testAPI();
+    facebookAPI();
   });
     
 };
