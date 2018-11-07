@@ -89,13 +89,13 @@
        var userPic = response.picture.data.url;
        var userEmail = response.email;
         console.log(name +  userId);
-        enterUser(userId, userName);
+        enterUser(userId);
         buildProfile(userName, userEmail, userPic);
       }
     })
   }
 
-  function enterUser(userId, userName) {
+  function enterUser(userId) {
     var currentURL = window.location.origin;
     $.post(currentURL + "/FacebookConnectTest/api/users", userId).then(function(res){
       console.log(res);
