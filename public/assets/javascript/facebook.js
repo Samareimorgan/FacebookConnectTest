@@ -103,8 +103,9 @@
 
 function buildProfile(userName, userEmail, userPic) {
  console.log("build profile should be working " + userName, +" " + userEmail + " " + userPic);
-  $("#profileName").text(userName);
-  $("#profileEmail").text(userEmail);
+ 
+ $("#profileName").innerHTML(userName);
+  $("#profileEmail").innerHTML(userEmail);
   $("#profilePhoto").attr("src", userPic);
 };
 
