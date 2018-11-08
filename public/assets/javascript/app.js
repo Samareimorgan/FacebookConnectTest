@@ -3,8 +3,8 @@ function apiKey() {
         console.log(key);
 
 
-        // var userId = 6;
-        // var userName = "Luke";
+        var userId = 6;
+        var userName = "Luke";
 
 
         console.log(key);
@@ -136,7 +136,7 @@ function apiKey() {
 
 
         //this is the function of when you favorite a recipe...inserts recipe to favs
-        $(document).on('click', 'favSave-btn', function () {
+        $(document).on('click', 'button.favSave-btn', function () {
             var RecipeDataName = $(this).data("title");
             var RecipeDataId = $(this).data("rid");
             var RecipeDataSource = $(this).data("source");
