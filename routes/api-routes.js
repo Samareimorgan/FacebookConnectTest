@@ -8,7 +8,9 @@
 // Requiring our Todo model
 var db = require("../models");
 
-require('dotenv').config({ path: './process.env' });
+require('dotenv').config({
+  path: './process.env'
+});
 
 // Routes
 // =============================================================
@@ -21,25 +23,22 @@ module.exports = function (app) {
 
 
 
-
   //USERS
   // GET route for getting all of the users
-  var currentURL = window.location.origin;
-  app.get(currentURL + "/FacebookConnectTest/api/users", function (req, res) {
+  app.get("/api/users", function (req, res) {
     db.UsersTable.findAll({}).then(function (dbUsers) {
       res.json(dbUsers);
     })
   });
   // POST route new user
-  var currentURL = window.location.origin;
-  app.post(currentURL + "/FacebookConnectTest/api/users", function (req, res) {
+  app.post("/api/users", function (req, res) {
     console.log(req.body)
     db.UsersTable.findOrCreate({
       where: {
         id: req.body.id,
         userName: req.body.userName
       },
-    }).error(function (err) {//error handling
+    }).error(function (err) { //error handling
       console.log(err);
     }).then(function (dbTodo) {
       res.json(dbTodo);
@@ -53,7 +52,15 @@ module.exports = function (app) {
   //RECIPES
   // GET route for getting all of the recipes
   app.get("/api/recipes", function (req, res) {
-    db.RecipeTable.findAll({}).then(function (dbRecipes) {
+    db.RecipeTable.findAll({
+      where: {
+        'UsersTableId': 6
+      },
+      include: [{
+        model: db.UsersTable,
+        required: true
+      }]
+    }).then(function (dbRecipes) {
       res.json(dbRecipes);
     })
   });
@@ -65,22 +72,27 @@ module.exports = function (app) {
         id: req.body.id,
         recipeName: req.body.recipeName,
         recipeImage: req.body.recipeImage,
+        recipeSource: req.body.recipeSource,
         UsersTableId: req.body.UsersTableId
-      }
-
-    }).error(function (err) {//error handling
+      },
+    }).error(function (err) { //error handling
       console.log(err);
     }).then(function (dbTodo) {
       res.json(dbTodo);
     });
   });
-  //STILL NEEDS TO BE WORKED ON!!!!! BELOW
+
   // DELETE route for deleting ingredients
   app.delete("/api/recipes/:id", function (req, res) {
     db.RecipeTable.destroy({
       where: {
         id: req.params.id
-      }
+      },
+      include: [{
+        model: db.CartTable,
+        where: {RecipeTableId: req.params.id},
+        required: true
+      }]
     }).then(function (db) {
       res.json(db);
     });
@@ -94,7 +106,15 @@ module.exports = function (app) {
   //CART
   // GET route for getting all of the content for the cart
   app.get("/api/cart", function (req, res) {
-    db.CartTable.findAll({}).then(function (dbUsers) {
+    db.CartTable.findAll({
+      where: {
+        'UsersTableId': 7
+      },
+      include: [{
+        model: db.UsersTable,
+        required: true
+      }]
+    }).then(function (dbUsers) {
       res.json(dbUsers);
     })
   });
@@ -103,9 +123,8 @@ module.exports = function (app) {
     console.log(req.body)
     db.CartTable.create({
       RecipeTableId: req.body.RecipeTableId,
-      UsersTableId: req.body.UsersTableId,
       Ingredients: req.body.Ingredients
-    }).error(function (err) {//error handling
+    }).error(function (err) { //error handling
       console.log(err);
     }).then(function (dbTodo) {
       res.json(dbTodo);
@@ -116,11 +135,9 @@ module.exports = function (app) {
     db.CartTable.destroy({
       where: {
         id: req.params.id
-      }
+      },
     }).then(function (db) {
       res.json(db);
     });
   });
-
 };
-
