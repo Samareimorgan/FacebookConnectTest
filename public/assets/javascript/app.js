@@ -3,8 +3,8 @@ function apiKey() {
         console.log(key);
 
 
-        var userId = 6;
-        var userName = "Luke";
+        // var userId = 6;
+        // var userName = "Luke";
 
 
         console.log(key);
@@ -26,9 +26,9 @@ function apiKey() {
                     // key: 'de652b66a0ed9e5c4aefcee2e3f791fd',
                     // key: '2435834079930c5216d0e6fe69dc6dd8',
                     // key: '6bebabc39fbf44828bad81f4395acae9',
-                      key: '5efb5d0a8c24108da72973177a5f779a', //(Sam's)
+                    //  key: '5efb5d0a8c24108da72973177a5f779a', //(Sam's)
                     //key: '6ed7500f281e17d62e8f1dfb424b473c',
-                    //key: key,
+                    key: '5efb5d0a8c24108da72973177a5f779a',
                     rId: recipeId,
                 },
                 success: function (result) {
@@ -113,7 +113,7 @@ function apiKey() {
                 url: 'https://www.food2fork.com/api/search',
                 type: 'GET',
                 data: {
-                    key: key,
+                    key: '5efb5d0a8c24108da72973177a5f779a',
                     q: food,
                     count: 5
                 },
