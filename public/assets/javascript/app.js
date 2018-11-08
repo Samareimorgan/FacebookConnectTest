@@ -136,7 +136,7 @@ function apiKey() {
 
 
         //this is the function of when you favorite a recipe...inserts recipe to favs
-        $(document).on('click', 'button.favSave-btn', function () {
+        $(document).on('click', 'favSave-btn', function () {
             var RecipeDataName = $(this).data("title");
             var RecipeDataId = $(this).data("rid");
             var RecipeDataSource = $(this).data("source");
