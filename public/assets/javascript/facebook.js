@@ -55,11 +55,13 @@ function enterUser(userData) {
 
 
 function buildProfile(userName, userEmail, userPic) {
+  var profileText = "Your Profile Information"
   console.log("build profile should be working " + userName, +" " + userEmail + " " + userPic);
-  
-  $("#profileName").html(`<h3>${userName}</h3>`);
-  $("#profileEmail").html(`<h3>${userEmail}</h3>`);
-  $("#profilePhoto").attr("src", userPic);
+
+  $("#buildProfile").append(`<div><h4>${profileText}</h4>
+  <img data-img=${userPic} src=${userPic} class='rounded mx-auto mt-2 d-block' alt="profile picture" style='height: 10rem; width: 10rem'> 
+  <p>${userName}</p>
+  <p>${userEmail}</p>`);
   };
 
 
