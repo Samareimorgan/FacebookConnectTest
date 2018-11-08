@@ -28,7 +28,7 @@ function apiKey() {
                     // key: '6bebabc39fbf44828bad81f4395acae9',
                     //  key: '5efb5d0a8c24108da72973177a5f779a', //(Sam's)
                     //key: '6ed7500f281e17d62e8f1dfb424b473c',
-                    key: '6ed7500f281e17d62e8f1dfb424b473c',
+                    key: '6bebabc39fbf44828bad81f4395acae9',
                     rId: recipeId,
                 },
                 success: function (result) {
@@ -113,7 +113,7 @@ function apiKey() {
                 url: 'https://www.food2fork.com/api/search',
                 type: 'GET',
                 data: {
-                    key: '6ed7500f281e17d62e8f1dfb424b473c',
+                    key: '6bebabc39fbf44828bad81f4395acae9',
                     q: food,
                     count: 5
                 },
@@ -162,11 +162,11 @@ function apiKey() {
             deleteRecipe(currentRecipeId)
         })
 
-        // A function for creating a user
-        function enterUser(userData) {
-            $.post("/api/users", userData);
-            console.log("pushed user data");
-        }
+        // // A function for creating a user
+        // function enterUser(userData) {
+        //     $.post("/api/users", userData);
+        //     console.log("pushed user data");
+        // }
 
         // This function inserts a new recipe into our database 
         function insertRecipe(recipeDataName, recipe, userId, recipeSource, recipeImage) {

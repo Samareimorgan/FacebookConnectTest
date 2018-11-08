@@ -13,7 +13,7 @@ $("document").ready(function () {
                 url: 'https://www.food2fork.com/api/get',
                 type: 'GET',
                 data: {
-                    key: '6ed7500f281e17d62e8f1dfb424b473c',
+                    key: '6bebabc39fbf44828bad81f4395acae9',
                     rId: recipeId,
                 },
                 success: function (result) {
@@ -72,7 +72,7 @@ $("document").ready(function () {
             url: 'https://www.food2fork.com/api/search',
             type: 'GET',
             data: {
-                key: '6ed7500f281e17d62e8f1dfb424b473c',
+                key: '6bebabc39fbf44828bad81f4395acae9',
                 q: rand,
                 count: 3
             },
