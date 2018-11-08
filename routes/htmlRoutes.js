@@ -47,7 +47,7 @@ function renderProfileList(req, res) {
 function renderShoppingList(req, res) {
   db.CartTable.findAll({}).then(function (cartInfoToHTML) {
     console.log("============= ", cartInfoToHTML);
-    res.render("shoppinglist", { CartTable: cartInfoToHTML });
+    res.render("cart", { CartTable: cartInfoToHTML });
   })
 };
 
